@@ -1,0 +1,7 @@
+<settings>
+<category label="RSS-Feed">
+	<setting id="rss_feed" type="text" label="30210" default="http://www.cczwei.de/rss_tvissues_all.php"/>
+	<setting id="regex_folge" type="text" label="30220" default="- (\d+. Folge)"/>
+	<setting id="regex_thema" type="text" label="30230" default="Heute: CC2: (.*)"/>
+</category>
+</settings>

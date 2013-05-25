@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+
+<strings>
+	<!-- addon.py -->
+    <string id="30110">ERROR - Could not load RSS feed!</string>
+    <string id="30120">Please try again later or correct the URL in the settings.</string>
+    
+    <!-- settings.xml-->
+    <string id="30210">URL</string>
+    <string id="30220">Filter: Episode</string>
+    <string id="30230">Filter: Thema</string>
+</strings>

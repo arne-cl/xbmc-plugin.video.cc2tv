@@ -1,0 +1,9 @@
+*.py[cod]
+
+# Eclipse + Pydev
+.project
+.settings
+.pydevproject
+
+# XBMC Zip-Archive
+plugin.video.cczwei.zip
