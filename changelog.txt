@@ -1,2 +1,5 @@
+22.06.2013 - v1.1.0
+	- Audiopodcast hinzugefügt
+
 25.05.2013 - v1.0.0
 	Veröffentlichung des AddOns

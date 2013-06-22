@@ -6,7 +6,8 @@
     <string id="30120">Bitte versuch es später nocheinmal oder korrigiere die[CR]URL in den Settings.</string>
 
     <!-- settings.xml-->
-    <string id="30210">URL</string>
+    <string id="30210">Video-URL</string>
+    <string id="30215">Audio-URL</string>
     <string id="30220">Filter: Folge</string>
     <string id="30230">Filter: Thema</string>
 </strings>

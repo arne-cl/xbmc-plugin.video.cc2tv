@@ -20,6 +20,7 @@
 # Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #******************************************************************************
 import sys
+import urllib
 import xbmcgui
 import xbmcaddon
 import xbmcplugin
@@ -30,11 +31,12 @@ class CCZwei(object):
     
     PLUGIN_NAME = "plugin.video.cczwei"
     
-    _plugin_id   = None
-    _addon       = None
-    _rss_feed    = None
-    _regex_folge = None
-    _regex_thema = None
+    _plugin_id      = None
+    _addon          = None
+    _rss_video_feed = None
+    _rss_audio_feed = None
+    _regex_folge    = None
+    _regex_thema    = None
     
     def __init__(self):
         self._register_addon()
@@ -46,23 +48,43 @@ class CCZwei(object):
         self._addon = xbmcaddon.Addon(id = self.PLUGIN_NAME)
 
     def _load_settings(self):
-        self._rss_feed = xbmcplugin.getSetting(self._plugin_id, "rss_feed")
+        self._rss_video_feed = xbmcplugin.getSetting(self._plugin_id, "rss_video_feed")
+        self._rss_audio_feed = xbmcplugin.getSetting(self._plugin_id, "rss_audio_feed")
         self._regex_folge = r"%s" % xbmcplugin.getSetting(self._plugin_id, "regex_folge")
         self._regex_thema = r"%s" % xbmcplugin.getSetting(self._plugin_id, "regex_thema")
 
     def _add_directory_items(self):
-        feed_data = Parser(self._rss_feed, self._regex_folge, self._regex_thema).get_data()
+        if not sys.argv[2]:
+            self._create_submenues()
+        else:
+            self._read_feed_data_into_directory(sys.argv[2])
+
+    def _create_submenues(self):
+        self._add_item_to_directory("Videopodcast", None, True)
+        self._add_item_to_directory("Audiopodcast", None, True)
+        xbmcplugin.endOfDirectory(self._plugin_id)
+
+    def _read_feed_data_into_directory(self, mode):
+        if mode == "?mode=Videopodcast":
+            rss_feed = self._rss_video_feed
+        else:
+            rss_feed = self._rss_audio_feed
+        feed_data = Parser(rss_feed, self._regex_folge, self._regex_thema).get_data()
         if feed_data:
             for (folge, thema, stream_url) in feed_data:
-                item = xbmcgui.ListItem("%s - %s" % (folge, thema))
-                xbmcplugin.addDirectoryItem(self._plugin_id, stream_url, item)
+                self._add_item_to_directory("%s - %s" % (folge, thema), stream_url)
             xbmcplugin.endOfDirectory(self._plugin_id)
         else:
             title = self._addon.getLocalizedString(30110)
             msg = self._addon.getLocalizedString(30120)
             xbmcgui.Dialog().ok(title, msg)
+
+    def _add_item_to_directory(self, title, url, isfolder=False):
+        if isfolder:
+            url = sys.argv[0] + "?" + urllib.urlencode({'mode' : title})
+        item = xbmcgui.ListItem(title)
+        xbmcplugin.addDirectoryItem(self._plugin_id, url, item, isfolder)
             
 if __name__ == "__main__":
     CCZwei()
-
                 
