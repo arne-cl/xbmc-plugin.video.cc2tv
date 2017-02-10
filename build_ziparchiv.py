@@ -8,7 +8,7 @@ class Build(object):
         "addon.py",
         "addon.xml",
         "changelog.txt",
-        "icon.png",
+#        "icon.png",
         "LICENSE.TXT",
         "resources/__init__.py",
         "resources/settings.xml",
