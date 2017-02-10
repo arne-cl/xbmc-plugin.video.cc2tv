@@ -5,5 +5,8 @@
 .settings
 .pydevproject
 
+# pytest
+.cache
+
 # XBMC Zip-Archive
 plugin.video.cc2tv.zip
