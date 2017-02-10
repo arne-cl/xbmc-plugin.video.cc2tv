@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 from zipfile import ZipFile, ZIP_DEFLATED
 
 class Build(object):
