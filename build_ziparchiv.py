@@ -2,7 +2,7 @@ from zipfile import ZipFile, ZIP_DEFLATED
 
 class Build(object):
     
-    NAME = "plugin.video.cczwei"
+    NAME = "plugin.video.cc2tv"
     FILES = [
         "addon.py",
         "addon.xml",

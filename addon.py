@@ -29,7 +29,7 @@ from resources.lib.Parser import Parser
 
 class CCZwei(object):
     
-    PLUGIN_NAME = "plugin.video.cczwei"
+    PLUGIN_NAME = "plugin.video.cc2tv"
     
     _plugin_id      = None
     _addon          = None
@@ -87,4 +87,3 @@ class CCZwei(object):
             
 if __name__ == "__main__":
     CCZwei()
-                
