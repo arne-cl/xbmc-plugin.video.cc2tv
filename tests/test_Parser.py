@@ -1,4 +1,5 @@
 # *-* coding=utf8 *-*
+import os
 from resources.lib.Parser import Parser
 
 class Test_Parser(object):
@@ -31,7 +32,7 @@ def _get_parser_for_test_feed():
     return Parser(_get_feed(), _get_folge_pattern(), _get_thema_pattern() )
 
 def _get_feed():
-    return "data/feed.xhtml"
+    return os.path.join(os.path.dirname(__file__), "data/feed.xhtml")
 
 def _get_folge_pattern():
     return "- (\d+. Folge)"
